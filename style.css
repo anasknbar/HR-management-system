@@ -1,0 +1,59 @@
+header{
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+
+}
+h1{
+ 
+  flex: 3;
+}
+ul{
+  display: flex;
+  column-gap: 100px;
+  justify-content: space-around;
+  flex: 2;
+  cursor: pointer;
+  list-style-type: none;
+}
+
+a{
+  text-decoration: none;
+  color: black;
+}
+
+table{
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 120px auto 0 auto;
+  border-collapse: collapse;
+  width: 70%;
+}
+
+th{
+  background-color: rgb(38, 233, 233);
+}
+
+
+th, td {
+  border: 1px solid #f1bab1;
+  
+  padding: 8px;
+  text-align: left;
+}
+
+footer{
+  width: fit-content;
+  margin: 80px auto;
+}
+.socialMedia{
+  display: flex;
+  justify-content: space-around;
+  cursor: pointer;
+  transition: 6s;
+  
+}
+
+
+
