@@ -1,22 +1,38 @@
+body,html{
+  
+  color: rgb(110, 88, 88);
+}
+
 header{
   font-family: Arial, Helvetica, sans-serif;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 20px ;
+  
   
 
 }
 h1{
- 
   flex: 3;
 }
-ul{
+
+.header-ul{
   display: flex;
   column-gap: 100px;
   justify-content: space-around;
   flex: 2;
   cursor: pointer;
   list-style-type: none;
+  
+}
+.header-ul li{
+  padding: 10px;
+  border-radius: 5px;
+}
+.header-ul li:hover{
+  
+  background-color: rgb(106, 240, 245);
 }
 
 a{
@@ -24,23 +40,95 @@ a{
   color: black;
 }
 
-table{
-  font-family: Arial, Helvetica, sans-serif;
-  margin: 120px auto 0 auto;
-  border-collapse: collapse;
-  width: 70%;
-}
-
-th{
-  background-color: rgb(38, 233, 233);
-}
-
-
-th, td {
-  border: 1px solid #f1bab1;
+.cards-container{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   
-  padding: 8px;
-  text-align: left;
+}
+.card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  width: 250px;
+  height: 300px;
+  
+  background-color: rgb(253, 251, 247);
+  border-radius: 15px;
+  box-shadow: 0 0 5px rgb(170, 165, 165);
+}
+
+img{
+  width: 100px;
+}
+
+/* ______________________ */
+
+ 
+
+form{
+  display: grid;
+  grid-template-columns: min-content;
+  width: fit-content;
+  margin: 0px auto 30px auto;
+  padding: 50px;
+  background-color: rgb(106, 240, 245);
+  border-radius: 3px;
+  
+
+}
+  label{
+  margin-bottom: 2px;
+}
+input,select{
+  margin-bottom: 10px;
+  padding: 10px 20px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0 0 5px rgb(245, 219, 219);
+  color: rgb(112, 104, 104);
+  font-size: 15px;
+}
+
+form button{
+  background-color: rgb(198, 148, 245);
+  border: none;
+  padding: 15px ;
+  border-radius: 5px;
+  color: whitesmoke;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+form button:hover{
+  opacity: 0.9;
+}
+form button:active{
+  opacity: 0.5;
+}
+
+
+.section{
+  display: flex;
+  border-radius: 5px;
+  justify-content: space-evenly;
+  row-gap: 20px;
+  flex-wrap: wrap;
+  padding: 40px;
+  
+  width: 70%;
+  margin: auto;
+  min-height: 500px;
+  background-color: rgb(250, 244, 233);
+  box-shadow: inset 0 0 10px gray;
+}
+
+.cards-container h1{
+  width: fit-content;
+  margin: auto;
 }
 
 footer{
@@ -54,6 +142,3 @@ footer{
   transition: 6s;
   
 }
-
-
-
