@@ -41,11 +41,8 @@ function EmployeeInfo(fullName,department,employeeLevel,employeeSalary,employeeE
 employeeForm.addEventListener('submit',function(e){
    e.preventDefault()
  
-  const employee = new EmployeeInfo(`${employeeName.value}`,`${department.value}`,`${level.value}`,`${salary.value}`,`${email.value}`,`${uniqueId()}`)
-  console.log(marketingArray)
-  console.log(administrationArray)
-  console.log(financeArray)
-  console.log(webArray)
+  const employee = new EmployeeInfo(`${employeeName.value}`,`${department.value}`,`${level.value}`,`${employeesalary(level.value)}`,`${email.value}`,`${uniqueId()}`,`${employeesalary()}`)
+  
 
 
   let html = ''
@@ -151,6 +148,15 @@ function uniqueId(){
   
   return id
 }
+function employeesalary(level) {
+  if(level === 'Senior'){
+    return Math.floor(Math.random()*(2000-1500 + 1))+1500
+  } else if ( level === 'Mid-Senior'){
+    return Math.floor(Math.random()*(1500-1000 + 1))+1000
+  } else if( level === 'Junior'){
+    return Math.floor(Math.random()*(1000-500 + 1))+500
+  }
+}
 
 function clearForm() {
   let form = document.getElementById("employeeForm");
@@ -159,7 +165,7 @@ function clearForm() {
   for (let i = 0; i < elements.length; i++) {
     let element = elements[i];
 
-    // Check if the element is an input field or textarea
+    
     if (element.tagName === "INPUT") {
       element.value = "";  
     }
