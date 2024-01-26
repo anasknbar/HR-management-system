@@ -5,18 +5,30 @@ const department = document.getElementById('department')
 const level = document.getElementById("level")
 const salary = document.getElementById("salary")
 const email = document.getElementById("email")
+const image = document.getElementById('img')
 
 
 
 
 
-let marketingArray = []
-let administrationArray = []
-let financeArray = []
-let webArray = []
+// let marketingArray = []
+// let administrationArray = []
+// let financeArray = []
+// let webArray = []
 
+let marketingArray = loadFromLocalStorage('marketingArray') || [];//*
+let administrationArray = loadFromLocalStorage('administrationArray') || [];
+let financeArray = loadFromLocalStorage('financeArray') || [];
+let webArray = loadFromLocalStorage('webArray') || [];//*
 
-let uniqueIdArray = []
+function loadFromLocalStorage(key) { //*
+  const data = localStorage.getItem(key); // there is data >>> true or there is no data >>> null >>> false 
+  return data ? JSON.parse(data) : null; // 'data' >> true
+
+}
+render()
+
+// let uniqueIdArray = []
 
 function EmployeeInfo(fullName,department,employeeLevel,employeeSalary,employeeEmail,employeeId){
   this.fullName = fullName
@@ -25,7 +37,7 @@ function EmployeeInfo(fullName,department,employeeLevel,employeeSalary,employeeE
   this.employeeSalary = employeeSalary
   this.employeeEmail = employeeEmail
   this.employeeId = employeeId
-
+  
   if(this.department === 'Marketing'){
     marketingArray.push(this)
   } else if(this.department === 'Finance'){
@@ -42,105 +54,24 @@ employeeForm.addEventListener('submit',function(e){
    e.preventDefault()
  
   const employee = new EmployeeInfo(`${employeeName.value}`,`${department.value}`,`${level.value}`,`${employeesalary(level.value)}`,`${email.value}`,`${uniqueId()}`,`${employeesalary()}`)
+
+  updateLocalStorage();
   
+  render()
 
-
-  let html = ''
-  if(department.value === 'Marketing'){
-    for(let employee of marketingArray){
-    
-      html += 
-      `<div id="card" class="card">
-      <img src="images/pic1.png" alt="">
-      <ul>
-        <li>Name:${employee.fullName}</li>
-        <li>Department: ${employee.department}</li>
-        <li>Level: ${employee.employeeLevel}</li>
-        <li>Salary: ${employee.employeeSalary}</li>
-        <li>Email : ${employee.employeeEmail}</li>
-        <li>ID: ${employee.employeeId}</li>
-        
-      </ul>
-    </div>
-    `
   
-    
-    }
-    document.getElementById('marketing').innerHTML = html
-    clearForm()
-  } else if(department.value === 'Finance'){
-    for(let employee of financeArray){
-    
-      html += 
-      `<div id="card" class="card">
-      <img src="images/pic5.png" alt="">
-      <ul>
-        <li>Name:${employee.fullName}</li>
-        <li>Department: ${employee.department}</li>
-        <li>Level: ${employee.employeeLevel}</li>
-        <li>Salary: ${employee.employeeSalary}</li>
-        <li>Email : ${employee.employeeEmail}</li>
-        <li>ID: ${employee.employeeId}</li>
-        
-      </ul>
-    </div>
-    `
-  
-    
-    }
-    document.getElementById('finance').innerHTML = html
-  } else if(department.value === 'Administration'){
-    for(let employee of administrationArray){
-    
-      html += 
-      `<div id="card" class="card">
-      <img src="images/pic6.png" alt="">
-      <ul>
-        <li>Name:${employee.fullName}</li>
-        <li>Department: ${employee.department}</li>
-        <li>Level: ${employee.employeeLevel}</li>
-        <li>Salary: ${employee.employeeSalary}</li>
-        <li>Email : ${employee.employeeEmail}</li>
-        <li>ID: ${employee.employeeId}</li>
-        
-      </ul>
-    </div>
-    `
-  
-    
-    }
-    document.getElementById('administration').innerHTML = html
-  } else if(department.value === 'Web Development'){
-    for(let employee of webArray){
-    
-      html += 
-      `<div id="card" class="card">
-      <img src="images/pic3.png" alt="">
-      <ul>
-        <li>Name:${employee.fullName}</li>
-        <li>Department: ${employee.department}</li>
-        <li>Level: ${employee.employeeLevel}</li>
-        <li>Salary: ${employee.employeeSalary}</li>
-        <li>Email : ${employee.employeeEmail}</li>
-        <li>ID: ${employee.employeeId}</li>
-        
-      </ul>
-    </div>
-    `
-  
-    
-    }
-    document.getElementById('web').innerHTML = html
-  }
- 
- 
-
-
- 
-
-
   
 })
+
+function updateLocalStorage() {
+  saveToLocalStorage('marketingArray', marketingArray);
+  saveToLocalStorage('administrationArray', administrationArray);
+  saveToLocalStorage('financeArray', financeArray);
+  saveToLocalStorage('webArray', webArray);
+}
+function saveToLocalStorage(key, data) {
+  localStorage.setItem(key, JSON.stringify(data));
+}
 
 
 function uniqueId(){
@@ -169,5 +100,95 @@ function clearForm() {
     if (element.tagName === "INPUT") {
       element.value = "";  
     }
+  }
+}
+
+function render(){
+  let html = ''
+  if(department.value === 'Marketing'){
+    for(let employee of marketingArray){
+    
+      html += 
+      `<div id="card" class="card">
+          <img src="images/pic5.png" alt="">
+          <ul>
+            <li>Name:${employee.fullName}</li>
+            <li>Department: ${employee.department}</li>
+            <li>Level: ${employee.employeeLevel}</li>
+            <li>Salary: ${employee.employeeSalary}</li>
+            <li>Email : ${employee.employeeEmail}</li>
+            <li>ID: ${employee.employeeId}</li>
+            
+          </ul>
+       </div>
+    `
+  
+    
+    }
+
+    document.getElementById('marketing').innerHTML = html
+    clearForm()
+  } else if(department.value === 'Finance'){
+    for(let employee of financeArray){
+    
+      html += 
+      `<div id="card" class="card">
+          <img src="images/pic5.png" alt="">
+          <ul>
+            <li>Name:${employee.fullName}</li>
+            <li>Department: ${employee.department}</li>
+            <li>Level: ${employee.employeeLevel}</li>
+            <li>Salary: ${employee.employeeSalary}</li>
+            <li>Email : ${employee.employeeEmail}</li>
+            <li>ID: ${employee.employeeId}</li>
+          </ul>
+       </div>
+    `
+    }
+    document.getElementById('finance').innerHTML = html
+    clearForm()
+
+
+  } else if(department.value === 'Administration'){
+    for(let employee of administrationArray){
+    
+      html += 
+      `<div id="card" class="card">
+          <img src="images/pic5.png" alt="">
+          <ul>
+            <li>Name:${employee.fullName}</li>
+            <li>Department: ${employee.department}</li>
+            <li>Level: ${employee.employeeLevel}</li>
+            <li>Salary: ${employee.employeeSalary}</li>
+            <li>Email : ${employee.employeeEmail}</li>
+            <li>ID: ${employee.employeeId}</li>
+            
+          </ul>
+       </div>
+    `
+    }
+    document.getElementById('administration').innerHTML = html
+    clearForm()
+    
+  } else if(department.value === 'Web Development'){
+    for(let employee of webArray){
+    
+      html += 
+      `<div id="card" class="card">
+          <img src="images/pic5.png" alt="">
+          <ul>
+            <li>Name:${employee.fullName}</li>
+            <li>Department: ${employee.department}</li>
+            <li>Level: ${employee.employeeLevel}</li>
+            <li>Salary: ${employee.employeeSalary}</li>
+            <li>Email : ${employee.employeeEmail}</li>
+            <li>ID: ${employee.employeeId}</li>
+            
+          </ul>
+       </div>
+    `
+    }
+    document.getElementById('web').innerHTML = html
+    clearForm()
   }
 }
