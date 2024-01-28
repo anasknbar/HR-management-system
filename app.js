@@ -36,16 +36,16 @@ function EmployeeInfo(fullName,department,employeeLevel,employeeSalary,employeeE
   if(this.department === 'Marketing'){
     
     marketingArray.push(this)
-    console.log(marketingArray)
+    
   } else if(this.department === 'Finance'){
     financeArray.push(this)
-    console.log( financeArray)
+    
   } else if(this.department === 'Administration'){
     administrationArray.push(this)
-    console.log( administrationArray)
+    
   } else if(this.department === 'Web Development'){
     webArray.push(this)
-    console.log(webArray)
+  
   }
   
 
@@ -111,7 +111,7 @@ function render(){
   
   if(marketingArray.length){
     let html = ''
-    console.log(marketingArray)
+    
     for(let employee of marketingArray){
     
       html += 
@@ -136,7 +136,7 @@ function render(){
     clearForm()
   }  if(financeArray.length){
     let html = ''
-    console.log(financeArray)
+    
     for(let employee of financeArray){
     
       html += 
@@ -159,7 +159,7 @@ function render(){
 
   }  if(administrationArray.length){
     let html = ''
-    console.log(administrationArray)
+   
     for(let employee of administrationArray){
     
       html += 
@@ -182,7 +182,7 @@ function render(){
     
   }  if(webArray.length){
     let html = ''
-    console.log(webArray)
+    
     for(let employee of webArray){
     
       html += 
