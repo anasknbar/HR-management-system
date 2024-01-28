@@ -46,7 +46,7 @@ const averageEmployeeSalary = document.getElementById(`averageEmployeeSalary`)
 
 totalEmployeeNumbre.innerHTML = totallEmployeeNumber()
 totalEmployeeSalary.innerHTML = totalSalary()
-averageEmployeeSalary.innerHTML = totalSalary() / totallEmployeeNumber()
+averageEmployeeSalary.innerHTML = Math.round(totalSalary() / (totallEmployeeNumber()||1)) 
 
 
 
@@ -61,7 +61,7 @@ function totalSalary(){
 }
 
 function totallEmployeeNumber(){
-  return administrationArray.length + marketingArray.length+financeArray.length +webArray.length || 1
+  return administrationArray.length + marketingArray.length+financeArray.length +webArray.length 
 }
 
 
