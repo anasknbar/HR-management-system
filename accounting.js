@@ -10,24 +10,24 @@ const totalAdmintrationSalary = document.getElementById('totalAdmintrationSalary
 const AverageAdminstrationSalary = document.getElementById('averageAdminstrationSalary')
 
 administrationEmployeeNumber.innerHTML = administrationArray.length
-totalAdmintrationSalary.innerHTML = administrationStatistics()
-AverageAdminstrationSalary.innerHTML = administrationStatistics()/(administrationArray.length || 1)
+totalAdmintrationSalary.innerHTML = administrationSalary()
+AverageAdminstrationSalary.innerHTML = administrationSalary()/(administrationArray.length || 1)
 //--------------------------------------------------------------------------------------//
 const marketingEmployeeNumber = document.getElementById('marketingEmployeeNumber')
 const totalMarketingSalary = document.getElementById('totalMarketingSalary')
 const averageMarketingSalary = document.getElementById('averageMarketingSalary')
 
 marketingEmployeeNumber.innerHTML = marketingArray.length
-totalMarketingSalary.innerHTML = marketingStatistics()
-averageMarketingSalary.innerHTML = Math.round(marketingStatistics()/(marketingArray.length || 1))
+totalMarketingSalary.innerHTML = marketingSalary()
+averageMarketingSalary.innerHTML = Math.round(marketingSalary()/(marketingArray.length || 1))
 //--------------------------------------------------------------------------------------//
 const webEmployeeNumber = document.getElementById('webEmployeeNumber')
 const totalwebSalary = document.getElementById('totalwebSalary')
 const averageWebsalary = document.getElementById('averageWebsalary')
 
 webEmployeeNumber.innerHTML = webArray.length
-totalwebSalary.innerHTML = webStatistics()
-averageWebsalary.innerHTML = Math.round( webStatistics()/(webArray.length || 1))
+totalwebSalary.innerHTML = webSalary()
+averageWebsalary.innerHTML = Math.round( webSalary()/(webArray.length || 1))
 
 
 //--------------------------------------------------------------------------------------//
@@ -36,32 +36,36 @@ const totalFinanceSalary = document.getElementById('totalFinanceSalary')
 const averageFinanceSalary = document.getElementById('averageFinanceSalary')
 
 financeEmployeeNumber.innerHTML = financeArray.length
-totalFinanceSalary.innerHTML = financeStatistics()
-averageFinanceSalary.innerHTML = Math.round( financeStatistics()/(financeArray.length || 1))
+totalFinanceSalary.innerHTML = financeSalary()
+averageFinanceSalary.innerHTML = Math.round( financeSalary()/(financeArray.length || 1))
 //--------------------------------------------------------------------------------------//
 
 const totalEmployeeNumbre = document.getElementById('totalEmployeeNumbre')
 const totalEmployeeSalary = document.getElementById('totalEmployeeSalary')
 const averageEmployeeSalary = document.getElementById(`averageEmployeeSalary`)
 
-totalEmployeeNumbre.innerHTML = administrationArray.length + marketingArray.length+financeArray.length +webArray.length
-totalEmployeeSalary.innerHTML = administrationStatistics() + marketingStatistics() +  webStatistics() + financeStatistics()
-averageEmployeeSalary.innerHTML = Math.round((administrationStatistics()/(administrationArray.length || 1) + marketingStatistics()/(marketingArray.length || 1) + webStatistics()/(webArray.length || 1) + financeStatistics()/(financeArray.length || 1))/((administrationArray.length + marketingArray.length+financeArray.length +webArray.length)||1)
-) 
+totalEmployeeNumbre.innerHTML = totallEmployeeNumber()
+totalEmployeeSalary.innerHTML = totalSalary()
+averageEmployeeSalary.innerHTML = totalSalary() / totallEmployeeNumber()
 
 
 
 
 
 
-console.log(administrationStatistics())
-console.log(marketingStatistics())
-console.log(webStatistics())
-console.log(financeStatistics())
 
 
 
-function administrationStatistics(){
+function totalSalary(){
+  return (administrationSalary() + marketingSalary() + webSalary() + financeSalary())
+}
+
+function totallEmployeeNumber(){
+  return administrationArray.length + marketingArray.length+financeArray.length +webArray.length || 1
+}
+
+
+function administrationSalary(){
   let totallSalary = 0
 
   for(let admin of administrationArray){
@@ -70,7 +74,7 @@ function administrationStatistics(){
   
   return totallSalary
 }
-function marketingStatistics(){
+function marketingSalary(){
   let totallSalary = 0
 
   for(let market of marketingArray){
@@ -79,7 +83,7 @@ function marketingStatistics(){
   
   return totallSalary
 }
-function webStatistics(){
+function webSalary(){
   let totallSalary = 0
 
   for(let web of webArray){
@@ -88,7 +92,7 @@ function webStatistics(){
   
   return totallSalary
 }
-function financeStatistics(){
+function financeSalary(){
   let totallSalary = 0
 
   for(let finance of financeArray){
