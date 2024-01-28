@@ -1,145 +1,187 @@
+
+
+
 body,html{
-  
-  color: rgb(110, 88, 88);
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
 }
-
 header{
-  font-family: Arial, Helvetica, sans-serif;
+  height: 100px;
+ 
+  padding:  10px 10px 10px 50px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 20px ;
-  
-  
-
+  color: #333;
+  margin: 0;
 }
-h1{
+
+header p {
   flex: 3;
+  font-size: 20px;
+  font-weight: bolder;
 }
-
-.header-ul{
-  display: flex;
-  column-gap: 100px;
-  justify-content: space-around;
-  flex: 2;
-  cursor: pointer;
-  list-style-type: none;
-  
-}
-.header-ul li{
-  padding: 10px;
-  border-radius: 5px;
-}
-.header-ul li:hover{
-  
-  background-color: rgb(106, 240, 245);
-}
-
 a{
   text-decoration: none;
-  color: black;
+  color: #333;
 }
-
-.cards-container{
+header ul{
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-  
-}
-.card{
-  display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  width: 250px;
-  height: 300px;
-  
-  background-color: rgb(253, 251, 247);
-  border-radius: 15px;
-  box-shadow: 0 0 5px rgb(170, 165, 165);
-}
-
-img{
-  width: 100px;
-}
-
-/* ______________________ */
-
- 
-
-form{
-  display: grid;
-  grid-template-columns: min-content;
-  width: fit-content;
-  margin: 0px auto 30px auto;
-  padding: 50px;
-  background-color: rgb(106, 240, 245);
-  border-radius: 3px;
-  
-
-}
-  label{
-  margin-bottom: 2px;
-}
-input,select{
-  margin-bottom: 10px;
-  padding: 10px 20px;
-  background-color: rgb(255, 255, 255);
-  border-radius: 5px;
-  border: none;
-  box-shadow: 0 0 5px rgb(245, 219, 219);
-  color: rgb(112, 104, 104);
-  font-size: 15px;
-}
-
-form button{
-  background-color: rgb(198, 148, 245);
-  border: none;
-  padding: 15px ;
-  border-radius: 5px;
-  color: whitesmoke;
-  font-weight: bold;
-  font-size: 15px;
+  flex: 2;
+  list-style-type: none;
   cursor: pointer;
 }
-
-form button:hover{
-  opacity: 0.9;
+.accounting{
+  padding: 10px;
+  border-radius: 15px;
+  font-weight: bold;
+  transition: 0.1s;
+  
 }
-form button:active{
+.accounting:hover{
+  transition: 0.1s;
+  background-color: #79a6eb;
+  
+  color: white;
+}
+.home{
+  padding: 10px;
+  border-radius: 15px;
+  background-color: #79a6eb;
+  font-weight: bold;
+  color: white;
+}
+
+.home:hover{
+  opacity: 0.8;
+}
+.home:active{
   opacity: 0.5;
 }
 
 
-.section{
+/*-------------------------*/
+
+.cards-container{
   display: flex;
-  border-radius: 5px;
+  padding: 20px;
+  gap: 5px;
+  margin-bottom: 200px;
+  
+}
+
+.card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: space-evenly;
-  row-gap: 20px;
-  flex-wrap: wrap;
-  padding: 40px;
+  width: 250px;
+  min-height: 325px;
+  background-color: #79a6eb ;
+  border-radius: 30px;
   
-  width: 70%;
-  margin: auto;
-  min-height: 500px;
-  background-color: rgb(250, 244, 233);
-  box-shadow: inset 0 0 10px gray;
+
+  
+  
+
+}
+.card ul{
+  list-style-type: none;
+  line-height: 25px;
+  font-size: 13px;
+  color:white;
+  font-weight: bold;
 }
 
-.cards-container h1{
-  width: fit-content;
-  margin: auto;
-}
-
-footer{
-  width: fit-content;
-  margin: 80px auto;
-}
-.socialMedia{
+.section{
+  width: 20%;
+  height: fit-content;
+  flex: 1;
   display: flex;
-  justify-content: space-around;
-  cursor: pointer;
-  transition: 6s;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid rgb(118, 118, 131);
+  border-radius: 15px;
   
 }
+.section h1{
+  color: gray;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #dfd0d0;
+}
+.inner-secion{
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+ 
+img{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+
+
+
+/*-------------*/
+.span1 label{
+  display: block;
+}
+.span2 label,button{
+  display: block;
+}
+label{
+  font-size: 13px;
+  color: #333;
+  font-weight: bold;
+}
+button{
+  cursor: pointer;
+  margin-top: 28px;
+  padding: 10px;
+  border-radius: 15px;
+  background-color: #79a6eb;
+  font-weight: bold;
+  color: white;
+  border: none;
+  font-weight: bolder;
+
+}
+button:hover{
+  opacity: 0.7;
+}
+button:active{
+  opacity: 0.5;
+}
+.span1,.span2{
+display: flex;
+flex-direction: column;
+}
+form{
+  display: flex;
+  gap: 20px;
+  width: fit-content;
+  margin: 50px auto;
+  padding: 0 0 100px 0px;
+  border-bottom: 1px solid rgb(218, 201, 201);
+  
+  
+  
+}
+
+input,select{
+  border: none;
+  margin: 10px 0;
+  padding: 10px 15px;
+  background-color: #f0f0f0;
+  /* box-shadow: 0 0 5px rgb(210, 213, 255); */
+  border-radius: 15px;
+  
+  
+}
+
+
 

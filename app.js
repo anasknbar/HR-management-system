@@ -11,24 +11,19 @@ const image = document.getElementById('img')
 
 
 
-// let marketingArray = []
-// let administrationArray = []
-// let financeArray = []
-// let webArray = []
 
-let marketingArray = loadFromLocalStorage('marketingArray') || [];//*
-let administrationArray = loadFromLocalStorage('administrationArray') || [];
-let financeArray = loadFromLocalStorage('financeArray') || [];
-let webArray = loadFromLocalStorage('webArray') || [];//*
 
-function loadFromLocalStorage(key) { //*
-  const data = localStorage.getItem(key); // there is data >>> true or there is no data >>> null >>> false 
-  return data ? JSON.parse(data) : null; // 'data' >> true
+let marketingArray =  JSON.parse(localStorage.getItem('marketing')) || []
+let administrationArray = JSON.parse(localStorage.getItem('admin.')) || [] ;
+let financeArray = JSON.parse(localStorage.getItem('finance')) || []
+let webArray = JSON.parse(localStorage.getItem('web')) || []
 
-}
+
 render()
 
-// let uniqueIdArray = []
+
+
+
 
 function EmployeeInfo(fullName,department,employeeLevel,employeeSalary,employeeEmail,employeeId){
   this.fullName = fullName
@@ -39,13 +34,18 @@ function EmployeeInfo(fullName,department,employeeLevel,employeeSalary,employeeE
   this.employeeId = employeeId
   
   if(this.department === 'Marketing'){
+    
     marketingArray.push(this)
+    console.log(marketingArray)
   } else if(this.department === 'Finance'){
     financeArray.push(this)
+    console.log( financeArray)
   } else if(this.department === 'Administration'){
     administrationArray.push(this)
+    console.log( administrationArray)
   } else if(this.department === 'Web Development'){
     webArray.push(this)
+    console.log(webArray)
   }
   
 
@@ -55,23 +55,27 @@ employeeForm.addEventListener('submit',function(e){
  
   const employee = new EmployeeInfo(`${employeeName.value}`,`${department.value}`,`${level.value}`,`${employeesalary(level.value)}`,`${email.value}`,`${uniqueId()}`,`${employeesalary()}`)
 
-  updateLocalStorage();
+  // updateLocalStorage();
+  localStorage.setItem('marketing',JSON.stringify(marketingArray))
+  localStorage.setItem('finance',JSON.stringify(financeArray))
+  localStorage.setItem('web',JSON.stringify(webArray))
+  localStorage.setItem('admin.',JSON.stringify(administrationArray))
+
   
-  render()
+ render()
 
   
   
 })
 
-function updateLocalStorage() {
-  saveToLocalStorage('marketingArray', marketingArray);
-  saveToLocalStorage('administrationArray', administrationArray);
-  saveToLocalStorage('financeArray', financeArray);
-  saveToLocalStorage('webArray', webArray);
-}
-function saveToLocalStorage(key, data) {
-  localStorage.setItem(key, JSON.stringify(data));
-}
+
+
+
+
+
+
+
+
 
 
 function uniqueId(){
@@ -104,19 +108,21 @@ function clearForm() {
 }
 
 function render(){
-  let html = ''
-  if(department.value === 'Marketing'){
+  
+  if(marketingArray.length){
+    let html = ''
+    console.log(marketingArray)
     for(let employee of marketingArray){
     
       html += 
       `<div id="card" class="card">
-          <img src="images/pic5.png" alt="">
+          <img src="images/pic5.png" alt="&#128532;">
           <ul>
-            <li>Name:${employee.fullName}</li>
+            <li>Name: ${employee.fullName}</li>
             <li>Department: ${employee.department}</li>
             <li>Level: ${employee.employeeLevel}</li>
             <li>Salary: ${employee.employeeSalary}</li>
-            <li>Email : ${employee.employeeEmail}</li>
+            <li>Email: ${employee.employeeEmail}</li>
             <li>ID: ${employee.employeeId}</li>
             
           </ul>
@@ -128,18 +134,20 @@ function render(){
 
     document.getElementById('marketing').innerHTML = html
     clearForm()
-  } else if(department.value === 'Finance'){
+  }  if(financeArray.length){
+    let html = ''
+    console.log(financeArray)
     for(let employee of financeArray){
     
       html += 
       `<div id="card" class="card">
           <img src="images/pic5.png" alt="">
           <ul>
-            <li>Name:${employee.fullName}</li>
+            <li>Name: ${employee.fullName}</li>
             <li>Department: ${employee.department}</li>
             <li>Level: ${employee.employeeLevel}</li>
             <li>Salary: ${employee.employeeSalary}</li>
-            <li>Email : ${employee.employeeEmail}</li>
+            <li>Email: ${employee.employeeEmail}</li>
             <li>ID: ${employee.employeeId}</li>
           </ul>
        </div>
@@ -149,18 +157,20 @@ function render(){
     clearForm()
 
 
-  } else if(department.value === 'Administration'){
+  }  if(administrationArray.length){
+    let html = ''
+    console.log(administrationArray)
     for(let employee of administrationArray){
     
       html += 
       `<div id="card" class="card">
           <img src="images/pic5.png" alt="">
           <ul>
-            <li>Name:${employee.fullName}</li>
+            <li>Name: ${employee.fullName}</li>
             <li>Department: ${employee.department}</li>
             <li>Level: ${employee.employeeLevel}</li>
             <li>Salary: ${employee.employeeSalary}</li>
-            <li>Email : ${employee.employeeEmail}</li>
+            <li>Email: ${employee.employeeEmail}</li>
             <li>ID: ${employee.employeeId}</li>
             
           </ul>
@@ -170,7 +180,9 @@ function render(){
     document.getElementById('administration').innerHTML = html
     clearForm()
     
-  } else if(department.value === 'Web Development'){
+  }  if(webArray.length){
+    let html = ''
+    console.log(webArray)
     for(let employee of webArray){
     
       html += 
@@ -181,7 +193,7 @@ function render(){
             <li>Department: ${employee.department}</li>
             <li>Level: ${employee.employeeLevel}</li>
             <li>Salary: ${employee.employeeSalary}</li>
-            <li>Email : ${employee.employeeEmail}</li>
+            <li>Email: ${employee.employeeEmail}</li>
             <li>ID: ${employee.employeeId}</li>
             
           </ul>
@@ -192,3 +204,7 @@ function render(){
     clearForm()
   }
 }
+
+
+
+
